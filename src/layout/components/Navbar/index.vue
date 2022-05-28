@@ -6,17 +6,19 @@
       <el-tooltip effect="dark" content="全屏" placement="bottom">
         <Screenfull class="screenfull" />
       </el-tooltip>
-      <el-dropdown class="avatar-container right-menu-item">
-        <div class="avatar-wrapper">
-          <img src="/img/logo.png" class="user-avatar" />
-          <span class="user-name">张飞</span>
-          <CaretBottom />
-        </div>
+      <el-dropdown class="avatar-container">
+        <span class="el-dropdown-link avatar-wrapper">
+          <img src="/img/default.png" class="user-avatar" />
+          <span class="user-name">张三丰</span>
+          <el-icon class="el-icon--right">
+            <CaretBottom />
+          </el-icon>
+        </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item @click="$router.push('/')">首页</el-dropdown-item>
             <el-dropdown-item divided @click="editPossword">修改密码</el-dropdown-item>
-            <el-dropdown-item divided @click="loginOut">登出</el-dropdown-item>
+            <el-dropdown-item divided @click="loginOut">退出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -65,8 +67,9 @@ const loginOut = () => {
 <style lang="scss" scoped>
 .navbar {
   height: 50px;
-  overflow: hidden;
   line-height: 50px;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
 
   .hamburger-container {
     float: left;
@@ -103,23 +106,24 @@ const loginOut = () => {
     }
 
     .avatar-container {
-      // height: 50px;
       margin-right: 30px;
-      
+      cursor: pointer;
       .avatar-wrapper {
         display: flex;
         justify-content: space-around;
-        margin-top: 5px;
-        cursor: pointer;
+        align-items: center;
+        .el-dropdown-link{
+          display: flex;
+        }
         .user-avatar {
           width: 30px;
           height: 30px;
-          cursor: pointer;
+
           border-radius: 10px;
         }
         .user-name{
           display: inline-block;
-          padding: 0 7px;
+          padding-left: 5px;
         }
         .el-icon-caret-bottom {
           position: absolute;
