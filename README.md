@@ -1,6 +1,6 @@
 # vue3-element-admin
 
-🎉 基于 Vite 2.0 + Vue3.0 + Vue-Router 4.0 + Vuex 4.0 + element-plus 的后台管理系统
+基于 Vite 2.0 + Vue3.0 + Vue-Router 4.0 + Vuex 4.0 + element-plus 的后台管理系统
 
 ## 简介
 
@@ -18,7 +18,7 @@ vue3-element-admin 是一个后台前端解决方案，它基于 vue3 和 elemen
 git clone https://github.com/m-baseui/vue3-admin-template.git
 
 # 进入项目目录
-cd vue3-element-admin
+cd vue3-admin-template
 
 # 安装依赖
 # 如果安装依赖报错：unable to resolve dependency tree，可使用 npm i --legacy-peer-deps 解决

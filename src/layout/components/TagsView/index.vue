@@ -11,7 +11,7 @@
         @contextmenu.prevent="openMenu(tag, $event)"
       >
         {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
+        <Close v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
       </router-link>
     </ScrollPane>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
@@ -26,9 +26,10 @@
 import { defineComponent } from 'vue'
 import ScrollPane from './ScrollPane.vue'
 import path from 'path'
+import { Close } from '@element-plus/icons-vue'
 
 export default defineComponent({
-  components: { ScrollPane },
+  components: { ScrollPane,Close },
   data() {
     return {
       visible: false,

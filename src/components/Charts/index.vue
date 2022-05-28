@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import * as echarts from 'echarts/core'
 import { BarChart, LineChart } from 'echarts/charts'
 import { GridComponent, TitleComponent, TooltipComponent, PolarComponent, LegendComponent } from 'echarts/components'
