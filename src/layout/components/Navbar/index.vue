@@ -1,5 +1,5 @@
 <template>
-  <el-menu class="navbar" mode="horizontal">
+  <div class="navbar">
     <Hamburger class="hamburger-container" :is-active="opened" @toggleClick="toggleSideBar" />
     <Breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
@@ -8,8 +8,9 @@
       </el-tooltip>
       <el-dropdown class="avatar-container right-menu-item">
         <div class="avatar-wrapper">
-          <img :src="avatar ? avatar : '/img/logo.png'" class="user-avatar" />
-          <i class="el-icon-caret-bottom" />
+          <img src="/img/logo.png" class="user-avatar" />
+          <span class="user-name">张飞</span>
+          <CaretBottom />
         </div>
         <template #dropdown>
           <el-dropdown-menu>
@@ -20,7 +21,7 @@
         </template>
       </el-dropdown>
     </div>
-  </el-menu>
+  </div>
 </template>
 
 <script setup>
@@ -31,6 +32,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import Hamburger from './Hamburger.vue'
 import Breadcrumb from './Breadcrumb.vue'
 import Screenfull from './Screenfull.vue'
+import { CaretBottom } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const store = useStore()
@@ -76,12 +78,7 @@ const loginOut = () => {
     float: left;
   }
 
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  :deep(.right-menu) {
+  .right-menu {
     display: flex;
     align-items: center;
     float: right;
@@ -108,18 +105,22 @@ const loginOut = () => {
     .avatar-container {
       // height: 50px;
       margin-right: 30px;
-
+      
       .avatar-wrapper {
-        position: relative;
+        display: flex;
+        justify-content: space-around;
         margin-top: 5px;
-
+        cursor: pointer;
         .user-avatar {
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           cursor: pointer;
           border-radius: 10px;
         }
-
+        .user-name{
+          display: inline-block;
+          padding: 0 7px;
+        }
         .el-icon-caret-bottom {
           position: absolute;
           top: 20px;

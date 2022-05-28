@@ -1,6 +1,19 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
+const Layout = (resolve) => require(['@/layout/index'], resolve)
+
 export const constantRoutes = [
+  {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
   {
     path: '/login',
     component: () => import('@/views/login/index.vue'),
@@ -40,10 +53,24 @@ export const constantRoutes = [
         meta: { title: '设置', icon: 'icon-yiyuanguanli', roles: ['admin'] }
       },
       {
-        path: '/star',
-        component: () => import('@/views/star/index.vue'),
-        name: 'Star',
-        meta: { title: '图表', icon: 'icon-quanke', roles: ['admin', 'editor'] }
+        path: '/example',
+        component: () => import('@/views/example/index.vue'),
+        name: 'Example',
+        meta: { title: '示例', icon: 'icon-quanke', roles: ['admin', 'editor'] },
+        children: [
+          {
+            path: '/example/table',
+            component: () => import('@/views/example/table/index.vue'),
+            name: 'Table',
+            meta: { title: 'Table', icon: 'icon-shouye'}
+          },
+          {
+            path: '/example/tree',
+            component: () => import('@/views/example/tree/index.vue'),
+            name: 'Tree',
+            meta: { title: 'Tree', icon: 'icon-shouye'}
+          },
+        ]
       }
     ]
   }

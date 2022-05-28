@@ -15,9 +15,10 @@
       </router-link>
     </ScrollPane>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">Close</li>
-      <li @click="closeOthersTags">Close Others</li>
-      <li @click="closeAllTags(selectedTag)">Close All</li>
+      <li @click="refreshSelectedTag(selectedTag)">刷新</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+      <li @click="closeOthersTags">关闭其他</li>
+      <li @click="closeAllTags(selectedTag)">关闭所有</li>
     </ul>
   </div>
 </template>
@@ -122,6 +123,17 @@ export default defineComponent({
             break
           }
         }
+      })
+    },
+    refreshSelectedTag(view) {
+      this.$store.dispatch('tagsView/delCachedView', view).then(() => {
+        const { fullPath } = view
+        console.log(fullPath);
+        this.$nextTick(() => {
+          this.$router.replace({
+            path: '/redirect' + fullPath
+          })
+        })
       })
     },
     closeSelectedTag(view) {
@@ -239,6 +251,7 @@ export default defineComponent({
     margin: 0;
     font-size: 12px;
     font-weight: 400;
+    top:85px !important;
     color: #333;
     list-style-type: none;
     background: #fff;
@@ -270,7 +283,7 @@ export default defineComponent({
       border-radius: 50%;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       transform-origin: 100% 50%;
-
+      vertical-align: -3px;
       &::before {
         display: inline-block;
         vertical-align: -3px;

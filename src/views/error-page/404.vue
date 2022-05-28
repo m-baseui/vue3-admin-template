@@ -9,22 +9,19 @@
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">OOPS!</div>
-        <div class="bullshit__info">
-          All rights reserved
-          <a class="blue" href="https://au1996.gitee.io/blog/" target="_blank">雪月</a>
-        </div>
+
         <div class="bullshit__headline">{{ message }}</div>
         <div class="bullshit__info">
-          Please check that the URL you entered is correct, or click the button below to return to the homepage.
+          请检查您输入的URL是否正确，或单击下面的按钮返回主页.
         </div>
-        <div class="bullshit__return-home" @click="$router.replace('/')">Back to home</div>
+        <div class="bullshit__return-home" @click="$router.replace('/')">返回首页</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const message = 'The webmaster said that you can not enter this page...'
+const message = '站长说你不能进入这个页面...'
 </script>
 
 <style lang="scss" scoped>

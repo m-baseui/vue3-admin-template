@@ -6,15 +6,19 @@
         <el-form-item prop="username">
           <el-input v-model="param.username" placeholder="用户名">
             <template #prepend>
-              <i class="el-icon-s-custom" />
+              <el-icon class="el-input__icon">
+                <User />
+              </el-icon>
             </template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="param.password" placeholder="密码" :type="passwordType" @keyup.enter="submitForm">
             <template #prepend>
-              <i v-show="passwordLock" class="el-icon-lock" @click="switchPass" />
-              <i v-show="!passwordLock" class="el-icon-unlock" @click="switchPass" />
+              <el-icon class="el-input__icon">
+                <Lock v-show="passwordLock" @click="switchPass" />
+                <Unlock v-show="!passwordLock" @click="switchPass" />
+              </el-icon>
             </template>
           </el-input>
         </el-form-item>
@@ -33,6 +37,7 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ElMessage } from 'element-plus'
+import { User,Lock,Unlock } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const store = useStore()
@@ -87,7 +92,6 @@ const submitForm = async () => {
   width: 100%;
   height: 100%;
   background-color: #235bae;
-  background-image: url(/img/login_bg.jpg);
   background-size: cover;
 }
 
